@@ -1,26 +1,27 @@
 package competition
 
-type Competition interface {
-	Id() int
-	Title() string
+type core struct {
+	Id    int
+	Title string
 }
 
-func (c competition) Id() int {
-	return c.id
+type Competition struct {
+	core
 }
 
-func (c competition) Title() string {
-	return c.title
+func (c Competition) Id() int {
+	return c.core.Id
 }
 
-type competition struct {
-	id    int
-	title string
+func (c Competition) Title() string {
+	return c.core.Title
 }
 
 func New(id int, title string) Competition {
-	return &competition{
-		id:    id,
-		title: title,
+	return Competition{
+		core{
+			Id:    id,
+			Title: title,
+		},
 	}
 }

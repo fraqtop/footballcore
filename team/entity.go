@@ -1,38 +1,37 @@
 package team
 
-type Team interface {
-	Id() int
-	SetId(id int)
-	TitleFull() string
-	TitleShort() string
+type core struct {
+	Id         int
+	TitleFull  string
+	TitleShort string
 }
 
-type team struct {
-	id         int
-	fullTitle  string
-	shortTitle string
+type Team struct {
+	core
 }
 
-func (t team) Id() int {
-	return t.id
+func (t Team) Id() int {
+	return t.core.Id
 }
 
-func (t *team) SetId(id int) {
-	t.id = id
+func (t *Team) SetId(id int) {
+	t.core.Id = id
 }
 
-func (t team) TitleFull() string {
-	return t.fullTitle
+func (t Team) TitleFull() string {
+	return t.core.TitleFull
 }
 
-func (t team) TitleShort() string {
-	return t.shortTitle
+func (t Team) TitleShort() string {
+	return t.core.TitleShort
 }
 
-func New(id int, fullTitle, shortTitle string) Team {
-	return &team{
-		id:         id,
-		shortTitle: shortTitle,
-		fullTitle:  fullTitle,
+func New(id int, titleFull, titleShort string) Team {
+	return Team{
+		core{
+			Id:         id,
+			TitleFull:  titleFull,
+			TitleShort: titleShort,
+		},
 	}
 }
