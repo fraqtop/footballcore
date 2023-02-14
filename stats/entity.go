@@ -5,70 +5,61 @@ import (
 	"github.com/fraqtop/footballcore/team"
 )
 
-type Stats interface {
-	Team() team.Team
-	Competition() competition.Competition
-	Season() string
-	Games() int
-	Points() int
-	Wins() int
-	Draws() int
-	Losses() int
-	Scored() int
-	Passed() int
+type core struct {
+	Team        team.Team
+	Competition competition.Competition
+	Season      string
+	Games       int
+	Points      int
+	Wins        int
+	Draws       int
+	Losses      int
+	Scored      int
+	Passed      int
 }
 
-type stats struct {
-	team        team.Team
-	competition competition.Competition
-	season      string
-	games       int
-	points      int
-	wins        int
-	draws       int
-	losses      int
-	scored      int
-	passed      int
+type Stats struct {
+	core
 }
 
-func (s stats) Wins() int {
-	return s.wins
+func (s Stats) Wins() int {
+	return s.core.Wins
 }
 
-func (s stats) Draws() int {
-	return s.draws
+func (s Stats) Draws() int {
+	return s.core.Draws
 }
 
-func (s stats) Losses() int {
-	return s.losses
+func (s Stats) Losses() int {
+	return s.core.Losses
 }
 
-func (s stats) Team() team.Team {
-	return s.team
+func (s Stats) Team() team.Team {
+	return s.core.Team
 }
 
-func (s stats) Competition() competition.Competition {
-	return s.competition
+func (s Stats) Competition() competition.Competition {
+	return s.core.Competition
 }
 
-func (s stats) Season() string {
-	return s.season
+func (s Stats) Season() string {
+	return s.core.Season
 }
 
-func (s stats) Points() int {
-	return s.points
+func (s Stats) Points() int {
+	return s.core.Points
 }
 
-func (s stats) Scored() int {
-	return s.scored
+func (s Stats) Scored() int {
+	return s.core.Scored
 }
 
-func (s stats) Passed() int {
-	return s.passed
+func (s Stats) Passed() int {
+	return s.core.Passed
 }
 
-func (s stats) Games() int {
-	return s.games
+func (s Stats) Games() int {
+	return s.core.Games
 }
 
 func New(
@@ -82,16 +73,18 @@ func New(
 	losses,
 	scored,
 	passed int) Stats {
-	return &stats{
-		team:        team,
-		competition: competition,
-		season:      season,
-		games:       games,
-		points:      points,
-		wins:        wins,
-		draws:       draws,
-		losses:      losses,
-		scored:      scored,
-		passed:      passed,
+	return Stats{
+		core{
+			Team: team,
+			Competition: competition,
+			Season: season,
+			Games: games,
+			Points: points,
+			Wins: wins,
+			Draws: draws,
+			Losses: losses,
+			Scored: scored,
+			Passed: passed,
+		},
 	}
 }
