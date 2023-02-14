@@ -75,16 +75,16 @@ func New(
 	passed int) Stats {
 	return Stats{
 		core{
-			Team: team,
+			Team:        team,
 			Competition: competition,
-			Season: season,
-			Games: games,
-			Points: points,
-			Wins: wins,
-			Draws: draws,
-			Losses: losses,
-			Scored: scored,
-			Passed: passed,
+			Season:      season,
+			Games:       games,
+			Points:      points,
+			Wins:        wins,
+			Draws:       draws,
+			Losses:      losses,
+			Scored:      scored,
+			Passed:      passed,
 		},
 	}
 }

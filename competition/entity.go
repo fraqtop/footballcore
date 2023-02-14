@@ -20,7 +20,7 @@ func (c Competition) Title() string {
 func New(id int, title string) Competition {
 	return Competition{
 		core{
-			Id: id,
+			Id:    id,
 			Title: title,
 		},
 	}
