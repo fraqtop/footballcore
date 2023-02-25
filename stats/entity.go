@@ -22,46 +22,6 @@ type Stats struct {
 	core
 }
 
-func (s Stats) Wins() int {
-	return s.core.Wins
-}
-
-func (s Stats) Draws() int {
-	return s.core.Draws
-}
-
-func (s Stats) Losses() int {
-	return s.core.Losses
-}
-
-func (s Stats) Team() team.Team {
-	return s.core.Team
-}
-
-func (s Stats) Competition() competition.Competition {
-	return s.core.Competition
-}
-
-func (s Stats) Season() string {
-	return s.core.Season
-}
-
-func (s Stats) Points() int {
-	return s.core.Points
-}
-
-func (s Stats) Scored() int {
-	return s.core.Scored
-}
-
-func (s Stats) Passed() int {
-	return s.core.Passed
-}
-
-func (s Stats) Games() int {
-	return s.core.Games
-}
-
 func New(
 	team team.Team,
 	competition competition.Competition,
@@ -87,4 +47,57 @@ func New(
 			Passed:      passed,
 		},
 	}
+}
+
+func (this Stats) Wins() int {
+	return this.core.Wins
+}
+
+func (this Stats) Draws() int {
+	return this.core.Draws
+}
+
+func (this Stats) Losses() int {
+	return this.core.Losses
+}
+
+func (this Stats) Team() team.Team {
+	return this.core.Team
+}
+
+func (this Stats) Competition() competition.Competition {
+	return this.core.Competition
+}
+
+func (this Stats) Season() string {
+	return this.core.Season
+}
+
+func (this Stats) Points() int {
+	return this.core.Points
+}
+
+func (this Stats) Scored() int {
+	return this.core.Scored
+}
+
+func (this Stats) Passed() int {
+	return this.core.Passed
+}
+
+func (this Stats) Games() int {
+	return this.core.Games
+}
+
+func (this Stats) IsValid() bool {
+	return this.core.Team.IsValid() &&
+		this.core.Competition.IsValid() &&
+		len(this.core.Season) > 0 &&
+		this.core.Games >= 0 &&
+		this.core.Passed >= 0 &&
+		this.core.Scored >= 0 &&
+		this.core.Losses >= 0 &&
+		this.core.Draws >= 0 &&
+		this.core.Wins >= 0 &&
+		this.core.Points >= 0
 }

@@ -9,14 +9,6 @@ type Competition struct {
 	core
 }
 
-func (c Competition) Id() int {
-	return c.core.Id
-}
-
-func (c Competition) Title() string {
-	return c.core.Title
-}
-
 func New(id int, title string) Competition {
 	return Competition{
 		core{
@@ -24,4 +16,16 @@ func New(id int, title string) Competition {
 			Title: title,
 		},
 	}
+}
+
+func (this Competition) Id() int {
+	return this.core.Id
+}
+
+func (this Competition) Title() string {
+	return this.core.Title
+}
+
+func (this Competition) IsValid() bool {
+	return len(this.core.Title) > 0
 }
