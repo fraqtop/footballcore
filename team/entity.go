@@ -39,4 +39,3 @@ func (this Team) TitleShort() string {
 func (this Team) IsValid() bool {
 	return len(this.core.TitleShort) > 0 && len(this.core.TitleFull) > 0
 }
-

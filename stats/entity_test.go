@@ -18,7 +18,7 @@ func TestValid(t *testing.T) {
 		0,
 		0,
 		0,
-		)
+	)
 	if !entity.IsValid() {
 		t.Fail()
 	}
